@@ -1,0 +1,20 @@
+<header class="p-3 mb-2">
+    <blockquote class="blockquote text-center">
+        <h1 class="display-2">{{questionpojo.question}} ?</h1>
+    </blockquote>
+</header>
+<p>
+<section>
+<div class="form-group">
+  <div style="color: darkgreen;background-color: goldenrod;" *ngFor="let option of questionpojo.answers; let i=index">
+    <div class="radio">
+      <input type="radio" id="{{option}}" name="radio{{i}}" [(ngModel)]="radio_button_value" [value]="option" />
+      <label for="{{option}}">{{option}}</label>    
+    </div>
+  </div>
+</div>
+<p>
+<div>
+    <button type="submit" (click)="submitAnswer()" class="btn btn-lg btn-block border border-warning">Submit Answer</button>
+</div>
+</section>
