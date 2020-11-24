@@ -5,8 +5,6 @@ import { ResultcoffeeComponent } from './resultcoffee/resultcoffee.component';
 
 const routes: Routes = [
   {path:'', component: HandlerquestionsComponent},
-  {path:'index', component: HandlerquestionsComponent},
-  {path:'question', component: HandlerquestionsComponent},
   {path:'result', component: ResultcoffeeComponent}
 ];
 

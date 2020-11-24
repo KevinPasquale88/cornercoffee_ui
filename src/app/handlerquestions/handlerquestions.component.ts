@@ -27,12 +27,14 @@ export class HandlerquestionsComponent implements OnInit {
   submitAnswer() {
     this.apiService.submitQuestion(this.radio_button_value, this.questionpojo.question).subscribe(response => {
       console.log(response);
-      this.coffeeChoose = response;
-      if(this.coffeeChoose != "Nothing."){
-        this.routed.navigate(['/result'], { queryParams: { coffeename: this.coffeeChoose }});
-      }
+      this.coffeeChoose = response.result;
+      console.log(this.coffeeChoose);
     });
-
+    if(this.coffeeChoose === "Nothing."){
+      this.getQuestion();
+    }else{
+      this.routed.navigateByUrl('/result', { queryParams: { coffeename: this.coffeeChoose }});
+    } 
   }
 
 }

@@ -7,6 +7,11 @@ export class QuestionPOJO {
 
 }
 
+export class Results {
+
+  constructor(public result: string){}
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,11 +29,11 @@ export class IntegrationapiService {
   submitQuestion(answer: string, question: string) {
     console.log(answer);
     const params = new HttpParams().set('answer', answer).set('question', question);
-    return this.http.post<string>(`http://${this.server}:${this.port}/cornercoffee/SubmitAnswer`, null, {params});
+    return this.http.post<Results>(`http://${this.server}:${this.port}/cornercoffee/SubmitAnswer`, null, {params});
   }
 
   getDescription(coffee: string) {
     const params = new HttpParams().set('coffeeName', coffee);
-    return this.http.get<string>(`http://${this.server}:${this.port}/cornercoffee/Description`, {params});
+    return this.http.get<Results>(`http://${this.server}:${this.port}/cornercoffee/Description`, {params});
   }
 }

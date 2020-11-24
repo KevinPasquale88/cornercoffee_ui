@@ -22,7 +22,8 @@ export class ResultcoffeeComponent implements OnInit {
 
   getDescription(){
     this.apiService.getDescription(this.coffeename).subscribe(response =>{
-      this.description = response;
+        console.log(response);
+        this.description = response.result;
     },errors =>{
       console.log(errors);
     });
