@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IntegrationapiService } from '../services/integrationapi.service';
 
 @Component({
@@ -11,9 +12,12 @@ export class ResultcoffeeComponent implements OnInit {
   coffeename : string;
   description: string;
 
-  constructor(private apiService: IntegrationapiService) { }
+  constructor(private apiService: IntegrationapiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.coffeename = params['coffeename'];
+    });
   }
 
   getDescription(){
