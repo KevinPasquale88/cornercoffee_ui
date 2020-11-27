@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IntegrationapiService, QuestionPOJO } from '../services/integrationapi.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class HandlerquestionsComponent implements OnInit {
   radio_button_value = null;
   questionpojo: QuestionPOJO;
   coffeeChoose: string;
-
+  
   constructor(private apiService: IntegrationapiService, private routed: Router) { }
 
   ngOnInit(): void {
@@ -29,12 +29,11 @@ export class HandlerquestionsComponent implements OnInit {
       console.log(response);
       this.coffeeChoose = response.result;
       console.log(this.coffeeChoose);
+      if(this.coffeeChoose == 'Nothing.'){
+        this.ngOnInit();
+      }else{
+        //do something
+      } 
     });
-    if(this.coffeeChoose === "Nothing."){
-      this.getQuestion();
-    }else{
-      this.routed.navigateByUrl('/result', { queryParams: { coffeename: this.coffeeChoose }});
-    } 
   }
-
 }
