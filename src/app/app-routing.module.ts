@@ -6,7 +6,7 @@ import { ResultcoffeeComponent } from './resultcoffee/resultcoffee.component';
 const routes: Routes = [
   {path:'', component: HandlerquestionsComponent},
   {path:'questions', component: HandlerquestionsComponent},
-  {path:'result', component: ResultcoffeeComponent}
+  {path:'result/:coffeename', component: ResultcoffeeComponent}
 ];
 
 @NgModule({

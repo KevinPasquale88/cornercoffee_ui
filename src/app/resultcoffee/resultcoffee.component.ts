@@ -15,9 +15,8 @@ export class ResultcoffeeComponent implements OnInit {
   constructor(private apiService: IntegrationapiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.coffeename = params['coffeename'];
-    });
+    this.coffeename = this.route.snapshot.params['coffeename'];
+    this.getDescription();
   }
 
   getDescription(){

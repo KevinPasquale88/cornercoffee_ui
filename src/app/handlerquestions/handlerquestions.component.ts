@@ -12,7 +12,7 @@ export class HandlerquestionsComponent implements OnInit {
   questionpojo: QuestionPOJO;
   coffeeChoose: string;
   
-  constructor(private apiService: IntegrationapiService, private routed: Router) { }
+  constructor(private apiService: IntegrationapiService,private route: Router) { }
 
   ngOnInit(): void {
     this.getQuestion();
@@ -32,7 +32,7 @@ export class HandlerquestionsComponent implements OnInit {
       if(this.coffeeChoose == 'Nothing.'){
         this.ngOnInit();
       }else{
-        //do something
+        this.route.navigate(['result', this.coffeeChoose]);
       } 
     });
   }
